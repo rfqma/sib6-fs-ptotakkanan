@@ -1,4 +1,4 @@
-<!-- Pertemuan Senin, 26 Februari 2024 -->
+<!-- Pertemuan Senin, 26 Februari 2024 (sesi materi pagi) -->
 
 <?php
 date_default_timezone_set('Asia/Jakarta');
