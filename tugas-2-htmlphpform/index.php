@@ -5,19 +5,21 @@ if (count($_POST) > 0) {
   if (
     isset($_POST['name']) &&
     isset($_POST['email']) &&
-    isset($_POST['username']) &&
-    isset($_POST['password'])
+    isset($_POST['whatsappNumber']) &&
+    isset($_POST['address'])
   ) {
     $_SESSION['name'] = $_POST['name'];
     $_SESSION['email'] = $_POST['email'];
-    $_SESSION['username'] = $_POST['username'];
+    $_SESSION['whatsappNumber'] = $_POST['whatsappNumber'];
+    $_SESSION['address'] = $_POST['address'];
     echo "Data berhasil disimpan di dalam session! <br><br>";
 
     $cookie_name = 'user_info';
     $cookie_value = json_encode(array(
       'name' => $_POST['name'],
       'email' => $_POST['email'],
-      'username' => $_POST['username'],
+      'whatsappNumber' => $_POST['whatsappNumber'],
+      'address' => $_POST['address'],
     ));
     setcookie($cookie_name, $cookie_value, time() + 60);
     echo "Data berhasil disimpan di dalam cookie! <br><br>";
@@ -29,13 +31,14 @@ if (count($_POST) > 0) {
 if (
   isset($_SESSION['name']) &&
   isset($_SESSION['email']) &&
-  isset($_SESSION['username'])
-  // && isset($_SESSION['password'])
+  isset($_SESSION['whatsappNumber']) &&
+  isset($_SESSION['address'])
 ) {
   echo "Data yang tersimpan di dalam session: <br>";
   echo "Nama: " . $_SESSION['name'] . "<br>";
   echo "Email: " . $_SESSION['email'] . "<br>";
-  echo "Username: " . $_SESSION['username'] . "<br><br>";
+  echo "Nomor WhatsApp: " . $_SESSION['whatsappNumber'] . "<br>";
+  echo "Alamat: " . $_SESSION['address'] . "<br><br>";
 } else {
   echo "Tidak ada data di dalam Session!<br><br>";
 }
@@ -57,9 +60,9 @@ if (
 <body>
   <form action="" method="post">
     <input type="text" placeholder="Nama" name="name">
-    <input type="email" placeholder="user@email.com" name="email">
-    <input type="text" placeholder="username" name="username">
-    <input type="password" placeholder="******" name="password">
+    <input type="email" placeholder="Email" name="email">
+    <input type="tel" placeholder="WhatsApp Number" name="whatsappNumber">
+    <input type="text" placeholder="Alamat" name="address">
     <button type="submit">Submit</button>
   </form>
 </body>
