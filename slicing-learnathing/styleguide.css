@@ -1,0 +1,21 @@
+:root {
+  --secondary: rgba(246, 153, 92, 1);
+  --primary-border: rgba(144, 149, 159, 1);
+  --primary-focus: rgba(33, 42, 62, 0.24);
+  --primary-hover: rgba(70, 78, 94, 1);
+  --primary-main: rgba(33, 42, 62, 1);
+  --primary-pressed: rgba(22, 28, 41, 1);
+  --primary-surface: rgba(250, 252, 253, 1);
+  --header-font-family: "Montserrat", Helvetica;
+  --header-font-weight: 700;
+  --header-font-size: 24px;
+  --header-letter-spacing: -0.2640000057220459px;
+  --header-line-height: normal;
+  --header-font-style: normal;
+  --reguler-font-family: "Montserrat", Helvetica;
+  --reguler-font-weight: 400;
+  --reguler-font-size: 16px;
+  --reguler-letter-spacing: -0.17600000381469727px;
+  --reguler-line-height: normal;
+  --reguler-font-style: normal;
+}
