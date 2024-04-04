@@ -1,0 +1,25 @@
+{
+  "nama_komunitas":"tes",
+  "anggota":[
+    {
+      "nama_anggota": "sdsdsdsdsdsdsdsdsds",
+      "email_anggota": "dsdsdsdsdsdsdsds",
+      "whatsapp_anggota": "dsdsdsdsdsds",
+      "alamat_anggota": "dsdsdsdsdsdsdsdsdsds"
+    },
+    {
+      "nama_anggota": "wewewewewewewq",
+      "email_anggota": "eweqwwqeqweqw",
+      "whatsapp_anggota": "ewqeqweqwewq",
+      "alamat_anggota": "ewqewqeqewq"
+    }
+  ]
+}
+
+{
+  "nama_komunitas":"SGB",
+  "nama_anggota":["sdsdsdsdsdsdsdsdsds","wewewewewewewq"],
+  "email_anggota":["dsdsdsdsdsdsdsds","eweqwwqeqweqw"],
+  "whatsapp_anggota":["dsdsdsdsdsds","ewqeqweqwewq"],
+  "alamat_anggota":["dsdsdsdsdsdsdsdsdsds","ewqewqeqewq"]
+}
