@@ -106,18 +106,13 @@
 
       var data_json = $('.data_json').val()
       if (data_json) {
-        data_json = JSON.parse(data_json)
-        console.log(data_json)
-        if (data_json['nama_anggota']) {
-          for (var i = 0; i < data_json['nama_anggota'].length; i++) {
-            var member = {
-              nama_anggota: data_json['nama_anggota'][i],
-              email_anggota: data_json['email_anggota'][i],
-              whatsapp_anggota: data_json['whatsapp_anggota'][i],
-              alamat_anggota: data_json['alamat_anggota'][i]
-            }
-            new_anggota(member)
-          }
+        var json_data = JSON.parse(data_json)
+        console.log(json_data)
+        $('input[name="nama_komunitas"]').val(jsonData.nama_komunitas);
+        if (jsonData.anggota) {
+          jsonData.anggota.forEach(function(member, index) {
+            newAnggota(member);
+          });
         }
       }
     })
