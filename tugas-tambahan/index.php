@@ -53,6 +53,22 @@
     #data__ {
       margin-bottom: 10px;
     }
+
+    .btn-hapus-anggota {
+      background-color: red;
+    }
+
+    .btn-hapus-anggota:hover {
+      background-color: darkred;
+    }
+
+    .btn-submit-form {
+      background-color: green;
+    }
+
+    .btn-submit-form:hover {
+      background-color: darkgreen;
+    }
   </style>
 </head>
 
@@ -67,11 +83,11 @@
     <div class="list-anggota">
     </div>
     <input type="hidden" class="total_anggota" value="0">
-    <button type="button" class="tombol_tambah_anggota">Tambah Anggota</button>
+    <button type="button" class="tombol_tambah_anggota">Tambah Form Anggota</button>
 
     <hr>
 
-    <button type="submit">Submit Form</button>
+    <button type="submit" class="btn-submit-form">Submit Form</button>
     <textarea class="data_json"><?php echo json_encode($_POST) ?></textarea>
   </form>
 
@@ -81,14 +97,14 @@
       $('.data_' + key).remove()
     }
 
-    function new_anggota(data) {
+    function new_anggota(nama_anggota, email_anggota, whatsapp_anggota, alamat_anggota) {
       var total_anggota = parseInt($('.total_anggota').val())
       var html = '<div id="data__" class="data_' + (total_anggota + 1) + '">' +
-        '<input type="text" name="nama_anggota[]" placeholder="Nama Anggota ' + (total_anggota + 1) + '" value="' + (data.nama_anggota ? data.nama_anggota : '') + '">' +
-        '<input type="text" name="email_anggota[]" placeholder="Email ' + (total_anggota + 1) + '" value="' + (data.email_anggota ? data.email_anggota : '') + '">' +
-        '<input type="text" name="whatsapp_anggota[]" placeholder="Whatsapp ' + (total_anggota + 1) + '" value="' + (data.whatsapp_anggota ? data.whatsapp_anggota : '') + '">' +
-        '<input type="text" name="alamat_anggota[]" placeholder="Alamat ' + (total_anggota + 1) + '" value="' + (data.alamat_anggota ? data.alamat_anggota : '') + '">' +
-        '<button type="button" onclick="delete_anggota(' + (total_anggota + 1) + ')">Hapus</button>' +
+        '<input type="text" name="nama_anggota[]" placeholder="Nama Anggota ' + (total_anggota + 1) + '" value="' + nama_anggota + '">' +
+        '<input type="text" name="email_anggota[]" placeholder="Email ' + (total_anggota + 1) + '" value="' + email_anggota + '">' +
+        '<input type="text" name="whatsapp_anggota[]" placeholder="Whatsapp ' + (total_anggota + 1) + '" value="' + whatsapp_anggota + '">' +
+        '<input type="text" name="alamat_anggota[]" placeholder="Alamat ' + (total_anggota + 1) + '" value="' + alamat_anggota + '">' +
+        '<button type="button" class="btn-hapus-anggota" onclick="delete_anggota(' + (total_anggota + 1) + ')">Hapus Anggota</button>' +
         '</div>'
       $('.list-anggota').append(html)
       $('.total_anggota').val(total_anggota + 1)
@@ -96,25 +112,19 @@
 
     $(document).ready(function() {
       $('.tombol_tambah_anggota').click(function() {
-        new_anggota({
-          nama_anggota: '',
-          email_anggota: '',
-          whatsapp_anggota: '',
-          alamat_anggota: ''
-        })
+        new_anggota('', '', '', '')
       })
 
       var data_json = $('.data_json').val()
-      if (data_json) {
-        var json_data = JSON.parse(data_json)
-        console.log(json_data)
-        $('input[name="nama_komunitas"]').val(jsonData.nama_komunitas);
-        if (jsonData.anggota) {
-          jsonData.anggota.forEach(function(member, index) {
-            newAnggota(member);
-          });
-        }
-      }
+      parsed_data_json = JSON.parse(data_json)
+      // console.log(parsed_data_json)
+      $.each(parsed_data_json['nama_anggota'], function(key, nama_anggota) {
+        var email_anggota = parsed_data_json['email_anggota'][key]
+        var whatsapp_anggota = parsed_data_json['whatsapp_anggota'][key]
+        var alamat_anggota = parsed_data_json['alamat_anggota'][key]
+
+        new_anggota(nama_anggota, email_anggota, whatsapp_anggota, alamat_anggota)
+      })
     })
   </script>
 
