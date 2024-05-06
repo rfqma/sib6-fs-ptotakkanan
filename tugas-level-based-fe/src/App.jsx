@@ -1,10 +1,11 @@
 import './App.css'
-import SimpleLayout from './components/SimpleLayout'
+
 import Card from './components/Card'
 import { useState, useEffect } from 'react'
 
 function App() {
   const [data, setData] = useState(null)
+  // eslint-disable-next-line no-unused-vars
   const [loading, setLoading] = useState(null)
 
   useEffect(() => {
@@ -16,6 +17,7 @@ function App() {
         }
         const data = await response.json()
         setData(data)
+        console.log(data)
       } catch (error) {
         console.error('Error fetching data:', error)
       } finally {
@@ -28,7 +30,7 @@ function App() {
 
   return (
     <>
-      <SimpleLayout>
+      
       <main className='p-4'>
           <h1 className="mb-4 text-2xl font-semibold text-red-800">Lorem Ipsum</h1>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro, deleniti!</p>
@@ -43,7 +45,7 @@ function App() {
             }
           </div>
       </main>
-    </SimpleLayout>
+    
     </>
   )
 }
